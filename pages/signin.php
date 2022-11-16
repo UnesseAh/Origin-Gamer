@@ -17,12 +17,12 @@
     <nav class="w-100  nav d-flex justify-content-between bg-dark">
         <div>
         <!-- <img src="../assets/img/logo.png" alt="" class="img-logo"> -->
-        <a class="nav-link active" aria-current="page" href="#">GAME STORE</a>
+            <a class="nav-link active" aria-current="page" href="#">GAME STORE</a>
         </div>
         <div class="d-flex">
-        <a class="nav-link activated" href="#">Home</a>
-        <a class="nav-link disabled" href="#">About Us</a>
-        <a class="nav-link disabled">Contact</a>
+            <a class="nav-link activated" href="#">Home</a>
+            <a class="nav-link disabled" href="#">About Us</a>
+            <a class="nav-link disabled">Contact</a>
         </div>
     </nav>
 
@@ -33,23 +33,20 @@
                 <div class="">
                 <form action="">
                     <div class="form-title">
-                        <h2 class="fw-bold mb-3">SIGN UP</h2>
+                        <h2 class="fw-bold mb-3">LOGIN</h2>
                     </div>
-                    <p>Create a new account!</p>
-                    <label for="usernmae" class="form-label fw-bold">Username</label>
-                    <input type="email" id="username" class="form-control" placeholder="Enter your username">
+                    <p>Good to see you again!</p>
                     <label for="email" class="form-label fw-bold">Email</label>
                     <input type="email" id="email" class="form-control" placeholder="Enter your email">
                     <label for="password" class="form-label fw-bold">Password</label>
                     <input type="email" id="password" class="form-control" placeholder="Enter your password">
-                    <label for="confirmPassword" class="form-label fw-bold">Confirm Password</label>
-                    <input type="email" id="confirmPassword" class="form-control" placeholder="Confirm your password">
-                    <button class="btn w-10">Sign in</button>
+                    <p class="text-danger">Forgot password?</p>
+                    <button type="button" class="btn btn-light fw-bolder rounded-pill">Sig In</button>
                     <div class="d-flex justify-content-evenly">
-                    <p class="">Already have an account? <span class="text-danger">Sign in.</span></p>
+                    <p class="">Don't have an account yet? <span class="text-danger">Create one.</span></p>
                     </div>
                     <div class="d-flex flex-column text-center">
-                    <p>——— Sign up with ———</p>
+                    <p>——— log in with ———</p>
                     <div>
                         <button type="button" class="btn btn-link btn-floating ">
                             <i class="fa-brands fa-facebook"></i>
