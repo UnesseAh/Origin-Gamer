@@ -1,3 +1,41 @@
+<?php
+
+include("../connection/database.php");
+
+session_start();
+
+
+
+$query = "SELECT * FROM users";
+mysqli_query($conn, $query);
+
+if(isset($_POST['signin']))
+{
+    $email = $_POST['email'];
+    $hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    $password = password_verify($_POST['password'], $hash);
+
+    $sql = "SELECT * FROM users WHERE email='$email' && password = '$password'";
+
+    if(mysqli_num_rows(mysqli_query($conn, $sql))){
+        header("Location:dashboard.php");
+    }
+
+
+}
+
+
+
+?>
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,7 +69,7 @@
         <div class="container bg-dark text-light p-10 col-4 mt-5 p-4 rounded">
             <div class="row ">
                 <div class="">
-                <form action="">
+                <form action="" class="form-transparent">
                     <div class="form-title">
                         <h2 class="fw-bold mb-3">LOGIN</h2>
                     </div>
@@ -41,7 +79,7 @@
                     <label for="password" class="form-label fw-bold">Password</label>
                     <input type="email" id="password" class="form-control" placeholder="Enter your password">
                     <p class="text-danger">Forgot password?</p>
-                    <button type="button" class="btn btn-light fw-bolder rounded-pill">Sig In</button>
+                    <button type="button" class="btn btn-light rounded-pill mb-3 mt-3 fw-bolder">Sign in</button>
                     <div class="d-flex justify-content-evenly">
                     <p class="">Don't have an account yet? <span class="text-danger">Create one.</span></p>
                     </div>
@@ -57,7 +95,6 @@
                         <button type="button" class="btn btn-link btn-floating ">
                             <i class="fa-brands fa-twitter"></i>
                         </button>
-
                     </div>
                     </div>
                 </form>

@@ -1,3 +1,35 @@
+<?php
+
+// connection
+
+include("../connection/database.php");
+
+
+if(isset($_POST['signup']))
+{
+    $username = htmlspecialchars(trim($_POST['username']));
+    $email = htmlspecialchars(trim($_POST['email']));
+    $password = htmlspecialchars(trim(password_hash($_POST['password'], PASSWORD_BCRYPT , PASSWORD_DEFAULT)));
+
+    // INSERT DATA INTO DATABASE TABLE
+    $query = "INSERT INTO  users (username, email, password) VALUES ('$username', '$email', '$password')";
+
+    mysqli_query($conn, $query);
+    header("location: dashboard.php");
+    die;
+}
+
+?>
+
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,22 +63,28 @@
         <div class="container bg-dark text-light p-10 col-4 mt-5 p-4 rounded">
             <div class="row ">
                 <div class="">
-                <form action="">
+                <form action="" method="POST">
                     <div class="form-title">
                         <h2 class="fw-bold mb-3">SIGN UP</h2>
                     </div>
                     <p>Create a new account!</p>
+
                     <label for="usernmae" class="form-label fw-bold">Username</label>
-                    <input type="email" id="username" class="form-control" placeholder="Enter your username">
+                    <input name="username" type="text" id="username" class="form-control" placeholder="Enter your username">
+
                     <label for="email" class="form-label fw-bold">Email</label>
-                    <input type="email" id="email" class="form-control" placeholder="Enter your email">
+                    <input name="email" type="email" id="email" class="form-control" placeholder="Enter your email">
+
                     <label for="password" class="form-label fw-bold">Password</label>
-                    <input type="email" id="password" class="form-control" placeholder="Enter your password">
+                    <input type="password" name="password" id="password" class="form-control" placeholder="Enter your password">
+
                     <label for="confirmPassword" class="form-label fw-bold">Confirm Password</label>
-                    <input type="email" id="confirmPassword" class="form-control" placeholder="Confirm your password">
-                    <button class="btn w-10">Sign in</button>
+                    <input type="password" name="passwordverify" id="confirmPassword" class="form-control" placeholder="Confirm your password">
+
+                    <button type="submit" name="signup" class="btn btn-light rounded-pill mb-3 mt-3 fw-bolder">Sign up</button>
+                    </form>
                     <div class="d-flex justify-content-evenly">
-                    <p class="">Already have an account? <span class="text-danger">Sign in.</span></p>
+                    <p class="">Already have an account? <span class="text-danger">Sign up.</span></p>
                     </div>
                     <div class="d-flex flex-column text-center">
                     <p>——— Sign up with ———</p>
@@ -63,7 +101,7 @@
 
                     </div>
                     </div>
-                </form>
+
                 </div>
 
         </div>
