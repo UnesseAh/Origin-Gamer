@@ -9,7 +9,7 @@ if(isset($_POST['signup']))
 {
     $username = htmlspecialchars(trim($_POST['username']));
     $email = htmlspecialchars(trim($_POST['email']));
-    $password = htmlspecialchars(trim(password_hash($_POST['password'], PASSWORD_BCRYPT , PASSWORD_DEFAULT)));
+    $password = htmlspecialchars(trim(md5($_POST['password'])));
 
     // INSERT DATA INTO DATABASE TABLE
     $query = "INSERT INTO  users (username, email, password) VALUES ('$username', '$email', '$password')";

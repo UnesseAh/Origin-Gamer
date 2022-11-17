@@ -5,20 +5,18 @@ include("../connection/database.php");
 session_start();
 
 
-
-$query = "SELECT * FROM users";
-mysqli_query($conn, $query);
-
 if(isset($_POST['signin']))
 {
     $email = $_POST['email'];
-    $hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
-    $password = password_verify($_POST['password'], $hash);
+    $password = md5($_POST['password']);
 
-    $sql = "SELECT * FROM users WHERE email='$email' && password = '$password'";
+    $sql = "SELECT * FROM users WHERE email='$email' AND password = '$password'";
 
-    if(mysqli_num_rows(mysqli_query($conn, $sql))){
+    if(mysqli_query($conn, $sql)){
+        // $_SESSION['username']= $email;
         header("Location:dashboard.php");
+    }else {
+        echo "incorrect inputs";
     }
 
 
@@ -69,17 +67,19 @@ if(isset($_POST['signin']))
         <div class="container bg-dark text-light p-10 col-4 mt-5 p-4 rounded">
             <div class="row ">
                 <div class="">
-                <form action="" class="form-transparent">
+                <form action="" method="post" class="form-transparent">
                     <div class="form-title">
                         <h2 class="fw-bold mb-3">LOGIN</h2>
                     </div>
                     <p>Good to see you again!</p>
                     <label for="email" class="form-label fw-bold">Email</label>
-                    <input type="email" id="email" class="form-control" placeholder="Enter your email">
+                    <input name="email" type="email" id="email" class="form-control" placeholder="Enter your email">
                     <label for="password" class="form-label fw-bold">Password</label>
-                    <input type="email" id="password" class="form-control" placeholder="Enter your password">
+                    <input type="password" name="password" id="password" class="form-control" placeholder="Enter your password">
                     <p class="text-danger">Forgot password?</p>
-                    <button type="button" class="btn btn-light rounded-pill mb-3 mt-3 fw-bolder">Sign in</button>
+                    <button type="submit" name="signin" class="btn btn-light rounded-pill mb-3 mt-3 fw-bolder">Sign in</button>
+                    </form>
+
                     <div class="d-flex justify-content-evenly">
                     <p class="">Don't have an account yet? <span class="text-danger">Create one.</span></p>
                     </div>
@@ -97,11 +97,13 @@ if(isset($_POST['signin']))
                         </button>
                     </div>
                     </div>
-                </form>
                 </div>
 
         </div>
         </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+
+    
 </body>
 </html>
