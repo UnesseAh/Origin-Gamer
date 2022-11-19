@@ -10,9 +10,9 @@ require '../vendor/autoload.php';
     $password = $_ENV['DB_PASSWORD'];
     $database = $_ENV['DB_DATABASE']; // enter the name of the database
 
-$conn = mysqli_connect($host, $user, $password, $database);
+    $connect = mysqli_connect($host, $user, $password, $database);
 
-if(!$conn){
+if(!$connect){
 
     die("Connection failed: " . mysqli_connect_error());
 }
