@@ -4,34 +4,30 @@ include("../connection/database.php");
 
 session_start();
 
+if(isset($_POST['signin']))   signin();
 
-if(isset($_POST['signin']))
+
+function signin()
 {
+    global $connect;
+    
     $email = $_POST['email'];
     $password = md5($_POST['password']);
 
     $sql = "SELECT * FROM users WHERE email='$email' AND password = '$password'";
+    $result = mysqli_query($connect, $sql);
 
-    if(mysqli_query($conn, $sql)){
-        // $_SESSION['username']= $email;
+    if(mysqli_num_rows($result) == 1){
+        $admin = mysqli_fetch_assoc($result);
+        $_SESSION["admin"] = $admin['username'];
         header("Location:dashboard.php");
     }else {
-        echo "incorrect inputs";
+        header("Location:signin.php");
     }
-
 
 }
 
-
-
 ?>
-
-
-
-
-
-
-
 
 
 <!DOCTYPE html>
@@ -102,8 +98,6 @@ if(isset($_POST['signin']))
         </div>
         </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
-    
-
     
 </body>
 </html>

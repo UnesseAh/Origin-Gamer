@@ -14,15 +14,11 @@ if(isset($_POST['signup']))
     // INSERT DATA INTO DATABASE TABLE
     $query = "INSERT INTO  users (username, email, password) VALUES ('$username', '$email', '$password')";
 
-    mysqli_query($conn, $query);
-    header("location: dashboard.php");
-    die;
+    mysqli_query($connect, $query);
+    header("location: signin.php");
 }
 
 ?>
-
-
-
 
 
 

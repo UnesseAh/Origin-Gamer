@@ -1,5 +1,6 @@
 <?php
 include('../functions/crud.php');
+
 ?>
 
 
@@ -18,10 +19,34 @@ include('../functions/crud.php');
 </head>
 
 <body>
+            <!----------------- HEADER ----------------->
+    <nav class="w-100  nav d-flex justify-content-between bg-dark">
+        <div>
+        <!-- <img src="../assets/img/logo.png" alt="" class="img-logo"> -->
+            <a class="nav-link active" aria-current="page" href="#">GAME STORE</a>
+        </div>
+        <div class="d-flex">
+            <a class="nav-link activated" href="#">Home</a>
+            <a class="nav-link disabled" href="#">About Us</a>
+            <a class="nav-link disabled">Contact</a>
+        </div>
+    </nav>
+
+
+
 
     <div class="container bg-dark text-light p-3 rounded my-4">
         <div class="d-flex align-items-center justify-content-between">
-            <h2>WELCOME</h2>
+            <h2>WELCOME
+                <?php
+                session_start();
+                echo $_SESSION['admin'];
+                ?>
+            </h2>
+
+            <a href="../functions/logout.php" name="logout" class="btn btn-danger">Logout</a>
+
+
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
             ADD PRODUCT
             </button>

@@ -4,7 +4,7 @@ include('../connection/database.php');
 
 
 if(isset($_POST['addProduct']))        addNewProduct();
-if(isset($_POST['deleteProduct']))        deleteProduct();
+// if(isset($_POST['deleteProduct']))        deleteProduct();
 
 /*********************************************************************************************************************/
 /*/////////////////////////////////////////////  Display Function  //////////////////////////////////////////////////*/
@@ -20,8 +20,11 @@ function displayProduct()
     $result = mysqli_query($connect, $sql);
     while($row = mysqli_fetch_assoc($result)){
         echo
+
         '
         <tr>
+        <form action="form.php" method="post">
+
             <th scope="row">'.$row['id'].'</th>
             <td>'.$row['image'].'</td>
             <td>'.$row['name'].'</td>
@@ -31,10 +34,12 @@ function displayProduct()
             <form action="crud.php" method="post">
             <td>
                 <button class="btn btn-success">Update</button>
-                <button name="deleteProduct" type="submit" class="btn btn-danger" >Delete</button>
+                <button name="deleteProduct" type="submit" class="btn btn-danger">Delete</button>
                 <input type="hidden" name="id" value="'.$row['id'].'">
             </td>
-        </form>
+                <input type="hidden" name="product-id" value="'.$row["id"].'">
+            </form>
+
         </tr>';
     }
 }
@@ -53,7 +58,6 @@ function addNewProduct() {
     $quantity = $_POST['quantity'];
     $price = $_POST['price'];
 
-
     $sql = "INSERT INTO products VALUES (null, '$image', '$name', '$category', '$quantity', '$price')";
     mysqli_query($connect, $sql);
 
@@ -66,18 +70,15 @@ function addNewProduct() {
 /*/////////////////////////////////////////////  Delete Function  ///////////////////////////////////////////////////*/
 /*********************************************************************************************************************/
 
-function deleteProduct()
-{
-    global $connect;
 
-    $productId = $_POST["id"]; 
-    $sql = "DELETE FROM products WHERE id='$productId'";
-    mysqli_query($connect,$sql);
+    // function deleteTask()
+    // {
+    //     global $connect;
 
-    // $_SESSION['message'] = "Task has been deleted successfully !";
-    header('location: ../pages/dashboard.php');
+    //     $productId = $_POST["product-id"];
+	// 	$sql = "DELETE FROM products WHERE id='$productId'";
+    //     mysqli_query($connect,$sql);
 
-}
+    //     header('location: ../pages/dashboard.php');
 
-
-?>
+    // }
