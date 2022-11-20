@@ -19,26 +19,21 @@ function displayProduct()
     
     $result = mysqli_query($connect, $sql);
     while($row = mysqli_fetch_assoc($result)){
-        echo
-
+        $id = $row['id'];
         '
-        <tr>
-        <form action="form.php" method="post">
+        <tr id="'.$id.'">
 
-            <th scope="row">'.$row['id'].'</th>
-            <td>'.$row['image'].'</td>
-            <td>'.$row['name'].'</td>
-            <td>'.$row['id_category'].'</td>
-            <td>'.$row['quantity'].'</td>
-            <td>'.$row['price'].'</td>
+            <th scope="row">'.$id.'</th>
+            <td class="imageProduct">'.$row['image'].'</td>
+            <td class="nameProduct">'.$row['name'].'</td>
+            <td class="categoryProduct">'.$row['id_category'].'</td>
+            <td class="quantityProduct">'.$row['quantity'].'</td>
+            <td class="priceProduct">'.$row['price'].'</td>
             <form action="crud.php" method="post">
             <td>
-                <button class="btn btn-success">Update</button>
+                <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="fullForm('.$id.')">Update</button>
                 <button name="deleteProduct" type="submit" class="btn btn-danger">Delete</button>
-                <input type="hidden" name="id" value="'.$row['id'].'">
             </td>
-                <input type="hidden" name="product-id" value="'.$row["id"].'">
-            </form>
 
         </tr>';
     }
@@ -62,6 +57,29 @@ function addNewProduct() {
     mysqli_query($connect, $sql);
 
     header('location: ../pages/dashboard.php');
+}
+
+
+
+/*********************************************************************************************************************/
+/*/////////////////////////////////////////////  Update Function  ///////////////////////////////////////////////////*/
+/*********************************************************************************************************************/
+
+function updateProduct(){
+    global $connect;
+
+    $id = $_POST['id'];
+    $image = $_POST['image'];
+    $name = $_POST['name'];
+    $category = $_POST['category'];
+    $quantity = $_POST['quantity'];
+    $price = $_POST['price'];
+
+    $sql = "UPDATE products SET image = $ WHERE id = $id";
+    mysqli_query($connect, $sql);
+    headr(location: '../pages/dashboard.php')
+
+
 }
 
 
