@@ -4,6 +4,21 @@ $pagetitle = 'EDIT FORM';
 include('../includes/head.php');
 include('../connection/database.php');
 
+/*********************************************************************************************************************/
+/*/////////////////////////////////////////////  Delete Function  ///////////////////////////////////////////////////*/
+/*********************************************************************************************************************/
+if(isset($_POST["deleteProduct"])){deleteTask();}
+function deleteTask()
+{
+    global $connect;
+    $id = $_POST['id'];
+    $sql = "DELETE FROM products WHERE id = '$id'";
+    mysqli_query($connect,$sql);
+    header('location: ../pages/dashboard.php');
+}
+/*********************************************************************************************************************/
+
+
 $id = $_POST['id'];
 $sql = "SELECT * FROM products WHERE id = '$id'";
 $result = mysqli_query($connect, $sql);

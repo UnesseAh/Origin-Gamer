@@ -4,10 +4,6 @@ body {
     background-repeat: no-repeat;
 }
 
-.logo-img {
-    width: 50px;
-    display: inline;
-}
 
 ul {
     list-style: none;
@@ -21,8 +17,17 @@ tbody tr td img{
 }
 
 .bg-dark {
-    background: rgba(30, 30, 30, 0.7);
-   
+    background: rgb(20, 24, 28,0.7) !important;
+    border-radius: 20px !important;
 }
 
 
+.header-nav {
+    background: rgb(20, 24, 28,0.7) !important;
+
+}
+
+.logo-img {
+    width: 60px;
+    display: inline;
+}

@@ -5,7 +5,7 @@ include('../connection/database.php');
 
 if(isset($_POST['addProduct']))            addNewProduct();
 if(isset($_POST['updateProduct']))         updateProduct();
-if(isset($_POST['deleteProduct']))        deleteProduct();
+if(isset($_POST['deleteProduct']))         deleteProduct();
 
 /*********************************************************************************************************************/
 /*/////////////////////////////////////////////  Display Function  //////////////////////////////////////////////////*/
@@ -48,7 +48,8 @@ function displayProduct()
 /*/////////////////////////////////////////////  Save New Task Function  ////////////////////////////////////////////*/
 /*********************************************************************************************************************/
 
-function addNewProduct() {
+function addNewProduct()
+{
     global $connect;
 
     //Store the values from the inputs of the form into variables
@@ -68,7 +69,8 @@ function addNewProduct() {
 /*/////////////////////////////////////////////  Update Function  ///////////////////////////////////////////////////*/
 /*********************************************************************************************************************/
 
-function updateProduct(){
+function updateProduct()
+{
     global $connect;
 
     $id = $_POST['id'];
@@ -83,30 +85,7 @@ function updateProduct(){
     move_uploaded_file($image, '../assets/img/'.$picture);
     mysqli_query($connect, $sql);
     header('location: ../pages/dashboard.php');
-
-
 }
 
 
 
-/*********************************************************************************************************************/
-/*/////////////////////////////////////////////  Delete Function  ///////////////////////////////////////////////////*/
-/*********************************************************************************************************************/
-
-
-function deleteTask()
-{
-    global $connect;
-
-    // $productId = $_POST['id'];
-
-
-
-
-    // $productId = $_POST["product-id"];
-	// $sql = "DELETE FROM products WHERE id='$productId'";
-    // mysqli_query($connect,$sql);
-
-    // header('location: ../pages/dashboard.php');
-
-}

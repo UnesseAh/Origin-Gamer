@@ -2,6 +2,7 @@
 
 include("../connection/database.php");
 
+
 session_start();
 
 if(isset($_POST['signin']))   signin();
@@ -24,48 +25,24 @@ function signin()
     }else {
         header("Location:signin.php");
     }
-
 }
 
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../assets/css/style.css" />
-    <title>Sign In Page</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link rel="icon" href="../assets/img/logo.png" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-    />
-    <script src="http://parsleyjs.org/dist/parsley.js"></script>
-  </head>
+<?php 
+$pagetitle = 'SIGN IN PAGE'; 
+include('../includes/head.php');
+?>
 
   <body>
-    <!----------------- HEADER ----------------->
-    <nav class="w-100 nav d-flex justify-content-between bg-dark">
-      <div>
-        <!-- <img src="../assets/img/logo.png" alt="" class="img-logo"> -->
-        <a class="nav-link active" aria-current="page" href="#">GAME STORE</a>
-      </div>
-      <div class="d-flex">
-        <a class="nav-link activated" href="#">Home</a>
-        <a class="nav-link disabled" href="#">About Us</a>
-        <a class="nav-link disabled">Contact</a>
-      </div>
-    </nav>
-
+  <nav class="w-100 nav d-flex px-5 justify-content-between  header-nav">
+    <?php include("../includes/header.php");?>
+  </nav>
     <!----------------- FORM ----------------->
 
-    <div class="container bg-dark text-light p-10 col-4 mt-5 p-4 rounded">
+    <div class="container bg-dark text-light p-10 col-4 mt-5 p-4 rounded col-lg-4 col-md-8 col-sm-10 col-xs-12">
       <div class="row">
         <div class="">
           <div class="form-title">
@@ -109,7 +86,7 @@ function signin()
           <div class="d-flex justify-content-evenly">
             <p class="">
               Don't have an account yet?
-              <span class="text-danger">Create one.</span>
+              <a href="signup.php" class="text-danger">Create one.</a>
             </p>
           </div>
           <div class="d-flex flex-column text-center">
@@ -122,7 +99,7 @@ function signin()
                 <i class="fa-brands fa-instagram"></i>
               </button>
               <button type="button" class="btn btn-link btn-floating">
-                <i class="fa-brands fa-twitter"></i>
+              <i class="fa-brands fa-twitter"></i>
               </button>
             </div>
           </div>
