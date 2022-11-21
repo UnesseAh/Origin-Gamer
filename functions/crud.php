@@ -4,8 +4,8 @@ include('../connection/database.php');
 
 
 if(isset($_POST['addProduct']))            addNewProduct();
-if(isset($_POST['updateProduct']))         addNewProduct();
-// if(isset($_POST['deleteProduct']))        deleteProduct();
+if(isset($_POST['updateProduct']))         updateProduct();
+if(isset($_POST['deleteProduct']))        deleteProduct();
 
 /*********************************************************************************************************************/
 /*/////////////////////////////////////////////  Display Function  //////////////////////////////////////////////////*/
@@ -64,8 +64,6 @@ function addNewProduct() {
     header('location: ../pages/dashboard.php');
 }
 
-
-
 /*********************************************************************************************************************/
 /*/////////////////////////////////////////////  Update Function  ///////////////////////////////////////////////////*/
 /*********************************************************************************************************************/
@@ -74,15 +72,17 @@ function updateProduct(){
     global $connect;
 
     $id = $_POST['id'];
-    $image = $_POST['image'];
+    $picture = $_FILES['image']['name'];
+    $image = $_FILES['image']['tmp_name'];
     $name = $_POST['name'];
     $category = $_POST['category'];
     $quantity = $_POST['quantity'];
     $price = $_POST['price'];
 
-    $sql = "UPDATE products SET image = $ WHERE id = $id";
+    $sql = "UPDATE products SET image = '$picture', name = '$name', id_category = '$category', quantity = '$quantity', price = '$price' WHERE id = '$id'";
+    move_uploaded_file($image, '../assets/img/'.$picture);
     mysqli_query($connect, $sql);
-    headr(location: '../pages/dashboard.php');
+    header('location: ../pages/dashboard.php');
 
 
 }
@@ -94,14 +94,19 @@ function updateProduct(){
 /*********************************************************************************************************************/
 
 
-    // function deleteTask()
-    // {
-    //     global $connect;
+function deleteTask()
+{
+    global $connect;
 
-    //     $productId = $_POST["product-id"];
-	// 	$sql = "DELETE FROM products WHERE id='$productId'";
-    //     mysqli_query($connect,$sql);
+    // $productId = $_POST['id'];
 
-    //     header('location: ../pages/dashboard.php');
 
-    // }
+
+
+    // $productId = $_POST["product-id"];
+	// $sql = "DELETE FROM products WHERE id='$productId'";
+    // mysqli_query($connect,$sql);
+
+    // header('location: ../pages/dashboard.php');
+
+}
