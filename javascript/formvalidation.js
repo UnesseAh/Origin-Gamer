@@ -2,23 +2,23 @@
 /************* WEB DEV SIMPLIFIED *****************/
 /************************************************ */
 
-const signinForm = document.getElementById("signin-form");
-const email = document.getElementById("email");
-const password = document.getElementById("password");
-const errorElement = document.getElementById("error");
+// const signinForm = document.getElementById("signin-form");
+// const email = document.getElementById("email");
+// const password = document.getElementById("password");
+// const errorElement = document.getElementById("error");
 
-signinForm.addEventListener("submit", (e) => {
-  let messages = [];
+// signinForm.addEventListener("submit", (e) => {
+//   let messages = [];
 
-  if (email.value == "" || email.value == null) {
-    messages.push("Email is required!");
-  }
+//   if (email.value == "" || email.value == null) {
+//     messages.push("Email is required!");
+//   }
 
-  if (messages.value > 0) {
-    e.preventDefault();
-    errorElement.innerText = messages;
-  }
-});
+//   if (messages.value > 0) {
+//     e.preventDefault();
+//     errorElement.innerText = messages;
+//   }
+// });
 
 /************************************************ */
 /***********EL ZERO FORM VALIDATION **************/

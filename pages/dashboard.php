@@ -17,7 +17,7 @@ include('../functions/crud.php');
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
     />
-    <link rel="stylesheet" href="../assets/css/dashboard.css" />
+    <link rel="stylesheet" href="../assets/css/style.css" />
     <link rel="icon" href="../assets/img/logo.png" />
     <title>Admin Dashboard</title>
   </head>
@@ -78,9 +78,8 @@ include('../functions/crud.php');
           </thead>
           <tbody>
             <?php
-                    displayProduct();
-
-                    ?>
+                displayProduct();
+            ?>
           </tbody>
         </table>
       </div>
@@ -109,11 +108,7 @@ include('../functions/crud.php');
               aria-label="Close"
             ></button>
           </div>
-          <form
-            action="../functions/crud.php"
-            method="post"
-            class="form-transparent"
-          >
+          <form action="../functions/crud.php" method="post" class="form-transparent" enctype="multipart/form-data">
             <div class="modal-body">
               <label for="name" class="form-label fw-bold">Name</label>
               <input
@@ -157,10 +152,10 @@ include('../functions/crud.php');
               <label for="image" class="form-label fw-bold">Image</label>
               <input
                 name="image"
-                type="text"
+                type="file"
                 id="image"
                 class="form-control"
-                placeholder="Enter the name of the image"
+                accept=".jpg, .png, .jpeg"
               />
             </div>
             <div class="modal-footer">

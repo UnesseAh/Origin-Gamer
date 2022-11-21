@@ -16,6 +16,13 @@ ul {
 ul img {
     size: 100px;
 }
+tbody tr td img{
+    width: 100px;
+}
 
+.bg-dark {
+    background: rgba(30, 30, 30, 0.7);
+   
+}
 
 

@@ -3,7 +3,8 @@
 include('../connection/database.php');
 
 
-if(isset($_POST['addProduct']))        addNewProduct();
+if(isset($_POST['addProduct']))            addNewProduct();
+if(isset($_POST['updateProduct']))         addNewProduct();
 // if(isset($_POST['deleteProduct']))        deleteProduct();
 
 /*********************************************************************************************************************/
@@ -14,25 +15,29 @@ function displayProduct()
 {
     global $connect;
 
-    $sql = "SELECT * FROM products 
-    INNER JOIN categories ON products.id_category = categories.id";
+    $sql = "SELECT p.id, p.image, p.name, p.quantity, p.price, c.category
+    FROM products as p
+    INNER JOIN categories as c 
+    ON p.id_category = c.id 
+    ORDER BY p.id;";
     
     $result = mysqli_query($connect, $sql);
     while($row = mysqli_fetch_assoc($result)){
-        $id = $row['id'];
-        '
-        <tr id="'.$id.'">
 
-            <th scope="row">'.$id.'</th>
-            <td class="imageProduct">'.$row['image'].'</td>
+        echo '<tr>
+
+            <td scope="row">'.$row['id'].'</td>
+            <td class=" imageProduct"><img src="../assets/img/'.$row['image'].'" alt=""></td>
             <td class="nameProduct">'.$row['name'].'</td>
-            <td class="categoryProduct">'.$row['id_category'].'</td>
+            <td class="categoryProduct">'.$row['category'].'</td>
             <td class="quantityProduct">'.$row['quantity'].'</td>
             <td class="priceProduct">'.$row['price'].'</td>
-            <form action="crud.php" method="post">
             <td>
-                <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="fullForm('.$id.')">Update</button>
+            <form action="editform.php" method="post">
+                <input type="hidden" name="id" value="'.$row['id'].'">
+                <button type="submit" class="btn btn-success" >Update</button>
                 <button name="deleteProduct" type="submit" class="btn btn-danger">Delete</button>
+            </form>
             </td>
 
         </tr>';
@@ -47,15 +52,15 @@ function addNewProduct() {
     global $connect;
 
     //Store the values from the inputs of the form into variables
-    $image = $_POST['image'];
+    $picture = $_FILES['image']['name'];
+    $image = $_FILES['image']['tmp_name'];
     $name = $_POST['name'];
     $category = $_POST['category'];
     $quantity = $_POST['quantity'];
     $price = $_POST['price'];
-
-    $sql = "INSERT INTO products VALUES (null, '$image', '$name', '$category', '$quantity', '$price')";
+    $sql = "INSERT INTO products VALUES (null, '$picture', '$name', '$category', '$quantity', '$price')";
+    move_uploaded_file($image,'../assets/img/'.$picture);
     mysqli_query($connect, $sql);
-
     header('location: ../pages/dashboard.php');
 }
 
@@ -77,7 +82,7 @@ function updateProduct(){
 
     $sql = "UPDATE products SET image = $ WHERE id = $id";
     mysqli_query($connect, $sql);
-    headr(location: '../pages/dashboard.php')
+    headr(location: '../pages/dashboard.php');
 
 
 }
