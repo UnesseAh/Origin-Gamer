@@ -27,15 +27,15 @@ $pagetitle = 'SIGN UP PAGE';
 include('../includes/head.php');
 ?>
 
-  <body>
+  <body class="signup-bg">
     <!----------------- HEADER ----------------->
-    <nav class="w-100 nav d-flex justify-content-between header-nav">
+    <nav class="bg-dark w-100 nav d-flex px-5 justify-content-between header-bg header-nav header-style">
       <?php include("../includes/header.php");?>
     </nav>
 
     <!----------------- FORM ----------------->
 
-    <div class="container bg-dark text-light p-10 col-4 mt-5 p-4 rounded">
+    <div class="container container-signin form-background  bg-dark radius text-light p-10 col-4 mt-5 p-4 rounded col-lg-4 col-md-8 col-sm-10">
       <div class="row">
         <div class="">
           <form action="" method="POST">
@@ -88,18 +88,19 @@ include('../includes/head.php');
                 placeholder="Confirm your password"
               />
             </div>
-
+             <div>
             <button
               type="submit"
               name="signup"
-              class="btn btn-light rounded-pill mb-3 mt-3 fw-bolder"
+              class="w-100 btn btn-primary rounded-pill mb-3 mt-3 fw-bolder"
             >
               Sign up
             </button>
+            </div>
           </form>
           <div class="d-flex justify-content-evenly">
             <p class="">
-              Already have an account? <a href="signin.php" class="text-danger">Sign up.</a>
+              Already have an account? <a href="signin.php" class="text-danger">Sign in.</a>
             </p>
           </div>
           <div class="d-flex flex-column text-center">

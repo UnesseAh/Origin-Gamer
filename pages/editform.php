@@ -58,7 +58,7 @@ $row = mysqli_fetch_assoc($result);
                         <div>
                             <img  <?php echo 'src="../assets/img/'.$row['image'].'"'?> style="width:100px;height:100px;" alt="photo">
                         </div>
-                        <input  name="image" type="file" accept=".jpg, .png, .jpeg" class="form-control">
+                        <input value="<?php echo $row['image'];?>"  name="image" type="file" accept=".jpg, .png, .jpeg" class="form-control">
                     </div>
                         <div class="mt-4 form-group d-flex justify-content-end">
                             <button name="updateProduct" type="submit" class="me-1 btn btn-warning">Update</button>

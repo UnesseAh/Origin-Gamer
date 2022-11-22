@@ -1,79 +1,77 @@
 <?php
 include('../functions/crud.php');
 
+$pagetitle = 'DASHBOARD PAGE'; 
+include('../includes/head.php');
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-    />
-    <link rel="stylesheet" href="../assets/css/style.css" />
-    <link rel="icon" href="../assets/img/logo.png" />
-    <title>Admin Dashboard</title>
-  </head>
 
   <body>
     <!----------------- HEADER ----------------->
-    <nav class="w-100 nav d-flex justify-content-between bg-dark">
-      <div>
-        <!-- <img src="../assets/img/logo.png" alt="" class="img-logo"> -->
-        <a class="nav-link active" aria-current="page" href="#">GAME STORE</a>
-      </div>
-      <div class="d-flex">
-        <a class="nav-link activated" href="#">Home</a>
-        <a class="nav-link disabled" href="#">About Us</a>
-        <a class="nav-link disabled">Contact</a>
-      </div>
-    </nav>
+    <nav class="dash-bg w-100 px-3 nav d-flex justify-content-between bg-dark">
+    <div class="d-flex justify-content-evenly align-items-center ">
+        <img src="../assets/img/logo.png" alt="" class="logo-img " >
+        <a class="nav-link active ps-0" aria-current="page" href="#" >GAME STORE</a>
+        <label for="check"> <i id="burger" class="ms-3 fs-3 text-light fa-solid fa-bars"></i></label>
+    </div>
+        <a class="nav-link ">
+        <i class="fa-solid fa-user px-2"></i>
 
-    <div class="container bg-dark text-light p-3 rounded my-4">
-      <div class="d-flex align-items-center justify-content-between">
-        <h2>
-          WELCOME
           <?php
                 session_start();
                 echo $_SESSION['admin'];
-                ?>
-        </h2>
+          ?>
+          </a>
+    </nav>
 
-        <a href="../functions/logout.php" name="logout" class="btn btn-danger"
-          >Logout</a
-        >
 
-        <button
-          type="button"
-          class="btn btn-primary"
-          data-bs-toggle="modal"
-          data-bs-target="#staticBackdrop"
-        >
-          ADD PRODUCT
-        </button>
+    <main>
+    <div class="container text-light p-5 rounded static-seq">
+      <div class="d-flex align-items-center justify-content-between">
+      <div class="card bg-danger">
+        <div class="card-body text-light fw-bold">
+          categories dafjkfhasdjfhasjdhfkajlsd
+        </div>
+      </div>
+      <div class="card bg-danger">
+        <div class="card-body text-light fw-bold">
+          Total Products
+        </div>
+      </div>
+      <div class="card bg-danger ">
+        <div class="card-body text-light fw-bold">
+          This is some text within a card body.
+        </div>
+      </div>
+
+
+       
+
+       
       </div>
     </div>
-
-    <div class="row my-5">
-      <h3 class="fs-4 mb-3 text-white">Recent Orders</h3>
-      <div class="col">
-        <table class="table bg-white rounded shadow-sm table-hover">
+      <aside id="aside-bar" >
+        <div class="d-flex justify-content-center flex-column gap-2 mx-2 sidbar-button">
+        <button type="button"  class="btn color-btn  rounded rounded-pill"  data-bs-toggle="modal"  data-bs-target="#staticBackdrop">ADD PRODUCT</button>
+        <button type="button"  class="btn color-btn  rounded rounded-pill" >Statistics</button>
+        <button type="button"  class="btn color-btn  rounded rounded-pill" >Edit Profile</button>
+        </div>
+        <div class="d-flex justify-content-center">
+        <a href="../functions/logout.php" name="logout" class="btn btn-danger rounded rounded-pill">Logout</a>
+        </div>
+      </aside>
+      <section class="container-section">
+      <div class="table-responsive mx-4" style="width:94%">
+        <table class="table table-dark table-striped   table-bordered rounded shadow-sm table-hover">
           <thead>
-            <tr>
-              <th scope="col" width="50">Id</th>
-              <th scope="col">Image</th>
-              <th scope="col">Name</th>
-              <th scope="col">Category</th>
-              <th scope="col">Quantity</th>
-              <th scope="col">Price</th>
-              <th scope="col">ACTION</th>
+            <tr class="" >
+              <th scope="col" class="text-center">ID</th>
+              <th scope="col" class="text-center">Image</th>
+              <th scope="col" class="text-center">Name</th>
+              <th scope="col" class="text-center">Category</th>
+              <th scope="col" class="text-center">Quantity</th>
+              <th scope="col" class="text-center">Price</th>
+              <th scope="col" class="text-center">ACTION</th>
             </tr>
           </thead>
           <tbody>
@@ -82,10 +80,35 @@ include('../functions/crud.php');
             ?>
           </tbody>
         </table>
-      </div>
-    </div>
-
-    <!-- Modal -->
+        </div>
+        </section>
+        </main>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        <!-- Modal -->
     <div
       class="modal fade"
       id="staticBackdrop"
@@ -174,6 +197,11 @@ include('../functions/crud.php');
         </div>
       </div>
     </div>
+    <script src="cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js">
+    $(document).ready( function () {
+    $('#myTable').DataTable();
+      } );
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
       var el = document.getElementById("wrapper");
@@ -184,5 +212,6 @@ include('../functions/crud.php');
       };
     </script>
     <script src="../javascript/form.js"></script>
+    <script src="../javascript/sidbar.js"></script>
   </body>
 </html>
