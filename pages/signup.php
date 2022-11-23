@@ -1,9 +1,11 @@
 <?php
 
-// connection
-
+/*////////////////  INCLUDE THE CONNECTION  /////////////////*/
 include("../connection/database.php");
 
+/*************************************************************/
+/*////////////////  SIGN UP FUNCTION  ///////////////////////*/
+/*************************************************************/
 
 if(isset($_POST['signup']))
 {
@@ -23,86 +25,57 @@ if(isset($_POST['signup']))
 <!DOCTYPE html>
 <html lang="en">
 <?php 
-$pagetitle = 'SIGN UP PAGE'; 
-include('../includes/head.php');
+/*//////////////////////////  INCLUDE THE HEAD  //////////////////////////*/
+  $pagetitle = 'SIGN UP PAGE'; 
+  include('../includes/head.php');
 ?>
 
   <body class="signup-bg">
-    <!----------------- HEADER ----------------->
-    <nav class="bg-dark w-100 nav d-flex px-5 justify-content-between header-bg header-nav header-style">
+    <nav class="bg-dark w-100 nav d-flex justify-content-between px-5  header-bg header-nav header-style">
+    <!--//////////////////// INCLUDE THE HEADER  //////////////////////////-->
       <?php include("../includes/header.php");?>
     </nav>
 
-    <!----------------- FORM ----------------->
-
+    <!--//////////////////// FORM STARTS HERE /////////////////////////////-->
     <div class="container container-signin form-background  bg-dark radius text-light p-10 col-4 mt-5 p-4 rounded col-lg-4 col-md-8 col-sm-10">
       <div class="row">
-        <div class="">
-          <form action="" method="POST">
+          <form action="" method="POST" data-parsley-validate>
             <div class="form-title">
               <h2 class="fw-bold mb-3">SIGN UP</h2>
             </div>
             <p>Create a new account!</p>
+
             <div class="form-group">
               <label for="usernmae" class="form-label fw-bold">Username</label>
-              <input
-                name="username"
-                type="text"
-                id="username"
-                class="form-control"
-                placeholder="Enter your username"
+              <input name="username" type="text" id="username" class="form-control" placeholder="Enter your username" placeholder="Enter your email" data-parsley-trigger="keyup" required
               />
             </div>
 
             <div class="form-group">
               <label for="email" class="form-label fw-bold">Email</label>
-              <input
-                name="email"
-                type="email"
-                id="email"
-                class="form-control"
-                placeholder="Enter your email"
+              <input name="email" type="email" id="email" class="form-control" placeholder="Enter your email" data-parsley-trigger="keyup" data-parsley-type="email" required
               />
             </div>
 
             <div class="form-group">
               <label for="password" class="form-label fw-bold">Password</label>
-              <input
-                type="password"
-                name="password"
-                id="password"
-                class="form-control"
-                placeholder="Enter your password"
-              />
+              <input type="password" name="password" id="password" class="form-control" placeholder="Enter your password" data-parsley-trigger="keyup" data-parsley-length="[8,30]" required/>
             </div>
 
             <div class="form-group">
-              <label for="confirmPassword" class="form-label fw-bold"
-                >Confirm Password</label
-              >
-              <input
-                type="password"
-                name="passwordverify"
-                id="confirmPassword"
-                class="form-control"
-                placeholder="Confirm your password"
-              />
+              <label for="confirmPassword" class="form-label fw-bold">Confirm Password</label>
+              <input type="password" name="passwordverify" id="confirmPassword" class="form-control" placeholder="Confirm your password" data-parsley-trigger="keyup" data-parsley-length="[8,30]" data-parsley-equalto="#password" required/>
             </div>
-             <div>
-            <button
-              type="submit"
-              name="signup"
-              class="w-100 btn btn-primary rounded-pill mb-3 mt-3 fw-bolder"
-            >
-              Sign up
-            </button>
+
+            <div>
+              <button type="submit" name="signup" class="w-100 btn btn-primary rounded-pill mb-3 mt-3 fw-bolder">Sign up</button>
             </div>
           </form>
+
           <div class="d-flex justify-content-evenly">
-            <p class="">
-              Already have an account? <a href="signin.php" class="text-danger">Sign in.</a>
-            </p>
+            <p class="">Already have an account? <a href="signin.php" class="text-danger fw-bold">Sign in.</a></p>
           </div>
+
           <div class="d-flex flex-column text-center">
             <p>——— Sign up with ———</p>
             <div>
@@ -117,9 +90,15 @@ include('../includes/head.php');
               </button>
             </div>
           </div>
-        </div>
       </div>
     </div>
+    <!--//////////////////// FORM ENDS HERE /////////////////////////////-->
+
+
+    <!--//////////////////// LINK TO FORMVALIDATION.JS /////////////////////////////-->
+    <script src="../javascript/formvalidation.js"></script>
+    <!--//////////////////// BOOTSTRAP JAVASCRIPT //////////////////////////////////-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+
   </body>
 </html>

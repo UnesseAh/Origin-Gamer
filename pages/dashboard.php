@@ -1,154 +1,157 @@
 <?php
-include('../functions/crud.php');
 
+include('../functions/crud.php');
+include('../functions/statistics.php');
+
+/*//////////////////////////  INCLUDE THE HEAD  //////////////////////////*/
 $pagetitle = 'DASHBOARD PAGE'; 
 include('../includes/head.php');
 ?>
 
 
-  <body>
-    <!----------------- HEADER ----------------->
-    <nav class="dash-bg w-100 px-3 nav d-flex justify-content-between bg-dark">
-    <div class="d-flex justify-content-evenly align-items-center ">
-        <img src="../assets/img/logo.png" alt="" class="logo-img " >
+<body>
+  <!--////////////////////////// HEADER //////////////////////////-->
+  <nav class="dash-bg w-100 px-3 nav d-flex justify-content-between bg-dark">
+    <div class="d-flex justify-content-evenly align-items-center">
+        <img src="../assets/img/logo.png" alt="" class="logo-img">
         <a class="nav-link active ps-0" aria-current="page" href="#" >GAME STORE</a>
         <label for="check"> <i id="burger" class="ms-3 fs-3 text-light fa-solid fa-bars"></i></label>
     </div>
-        <a class="nav-link ">
-        <i class="fa-solid fa-user px-2"></i>
+    <a class="nav-link">
+    <i class="fa-solid fa-user px-2"></i>
+      <?php
+        session_start();
+        echo $_SESSION['admin'];
+      ?>
+    </a>
+  </nav>
 
-          <?php
-                session_start();
-                echo $_SESSION['admin'];
-          ?>
-          </a>
-    </nav>
-
-
-    <main>
-    <div class="container text-light p-5 rounded static-seq">
-      <div class="d-flex align-items-center justify-content-between">
-      <div class="card bg-danger">
-        <div class="card-body text-light fw-bold">
-          categories dafjkfhasdjfhasjdhfkajlsd
-        </div>
+  <main>
+    <!--//////////////// ASIDEN BAR SECTION ///////////////////////-->
+    <aside id="aside-bar" >
+      <div class="d-flex justify-content-center flex-column gap-2 mx-2 sidbar-button">
+        <button type="button"  class="btn color-btn rounded rounded-pill"  data-bs-toggle="modal"  data-bs-target="#staticBackdrop"><i class="fa-solid fa-plus"></i> ADD PRODUCT</button>
+        <button type="button" class="btn color-btn rounded rounded-pill">EDIT PROFILE</button>
       </div>
-      <div class="card bg-danger">
-        <div class="card-body text-light fw-bold">
-          Total Products
-        </div>
-      </div>
-      <div class="card bg-danger ">
-        <div class="card-body text-light fw-bold">
-          This is some text within a card body.
-        </div>
-      </div>
-
-
-       
-
-       
-      </div>
-    </div>
-      <aside id="aside-bar" >
-        <div class="d-flex justify-content-center flex-column gap-2 mx-2 sidbar-button">
-        <button type="button"  class="btn color-btn  rounded rounded-pill"  data-bs-toggle="modal"  data-bs-target="#staticBackdrop">ADD PRODUCT</button>
-        <button type="button"  class="btn color-btn  rounded rounded-pill" >Statistics</button>
-        <button type="button"  class="btn color-btn  rounded rounded-pill" >Edit Profile</button>
-        </div>
-        <div class="d-flex justify-content-center">
+      <div class="d-flex justify-content-center">
         <a href="../functions/logout.php" name="logout" class="btn btn-danger rounded rounded-pill">Logout</a>
+      </div>
+    </aside>
+
+    <section class="container-section">
+      <div class="container-fluid  text-light p-5 rounded ">
+        <div class="row justify-content-around">
+          
+          <!--//////////////// STATISTICS SECTION ///////////////////////-->
+          <div class="card col-md-3 mb-3 statistic-cards p-2">
+
+            <!--////////////////////////// CATEGORIES CARD //////////////////////////-->
+            <div class="card-body text-light fw-bold text-center">Categories</div>
+              <div class="pb-3 d-flex justify-content-center">
+                <!----- GAMES ICONS ----->
+                <span class="d-flex align-items-center flex-column ">
+                  <span>
+                    <i class="fa-solid fa-gamepad statistics-icons bg-dark"></i>
+                  </span>
+                  <span class="text-light  fw-bold text-center p-2 fs-4">
+                    <?php echo statistics(1); ?>
+                  </span>
+                </span>
+                <!------- KEYBOARD ICONS ----->
+                <span class="d-flex align-items-center flex-column ">
+                  <span>
+                    <i class="fa-solid fa-keyboard statistics-icons bg-dark"></i>
+                  </span>
+                  <span class="text-light  fw-bold text-center p-2 fs-4">
+                    <?php echo statistics(2); ?>
+                  </span>
+                </span>
+                <!-------- MONITOR ICONS ------>  
+                <span class="d-flex align-items-center flex-column ">
+                  <span class="icon">
+                    <i class="fa-solid fa-tv statistics-icons bg-dark"></i>
+                  </span>
+                  <span class="text-light  fw-bold text-center p-2 fs-4">
+                    <?php echo statistics(4); ?>
+                  </span>
+                </span>
+
+                <!-------- MONITOR ICONS ------->
+                <span class="d-flex align-items-center flex-column ">
+                  <span>
+                    <i class="fa-solid fa-computer statistics-icons bg-dark"></i>
+                  </span>
+                  <span class="text-light  fw-bold text-center p-2 fs-4">
+                  <?php echo statistics(5); ?>
+                  </span>
+                </span>
+              </div>
+            </div>
+            
+            <!--////////////////////////// TOTAL PRODUCTS CARD //////////////////////////-->
+            <div class="card col-md-3 mb-3 col-sm-12 statistic-cards d-flex align-items-center p-2">
+              <div class="card-body text-light fw-bold">Total products</div>
+                <div>
+                  <span class="text-danger  fw-bold text-center p-2 fs-4">
+                    <?php echo totalProducts(); ?>
+                </span>
+              </div>
+            </div>
+
+            <!--////////////////////////// TOTAL QUANTITIES CARD //////////////////////////-->
+            <div class="card col-md-3 mb-3 col-sm-12 statistic-cards d-flex align-items-center p-2">
+              <div class="card-body text-light fw-bold">Total quantities</div>
+                <div>
+                  <span class="text-danger fw-bold text-center p-2 fs-4">
+                    <?php echo totalQuantities(); ?>
+                  </span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!--////////////////////////// TABEL SECTION //////////////////////////-->
+          <div class="table-responsive mx-4" style="width:94%">
+            <table id="myTable" class="table table-dark table-striped   table-bordered rounded shadow-sm table-hover">
+              <thead>
+                <tr class="" >
+                  <th scope="col" class="text-center">ID</th>
+                  <th scope="col" class="text-center">Image</th>
+                  <th scope="col" class="text-center">Name</th>
+                  <th scope="col" class="text-center">Category</th>
+                  <th scope="col" class="text-center">Quantity</th>
+                  <th scope="col" class="text-center">Price</th>
+                  <th scope="col" class="text-center">ACTION</th>
+                </tr>
+              </thead>
+              <tbody>
+                <?php displayProduct(); ?>
+              </tbody>
+            </table>
+          </div>
         </div>
-      </aside>
-      <section class="container-section">
-      <div class="table-responsive mx-4" style="width:94%">
-        <table class="table table-dark table-striped   table-bordered rounded shadow-sm table-hover">
-          <thead>
-            <tr class="" >
-              <th scope="col" class="text-center">ID</th>
-              <th scope="col" class="text-center">Image</th>
-              <th scope="col" class="text-center">Name</th>
-              <th scope="col" class="text-center">Category</th>
-              <th scope="col" class="text-center">Quantity</th>
-              <th scope="col" class="text-center">Price</th>
-              <th scope="col" class="text-center">ACTION</th>
-            </tr>
-          </thead>
-          <tbody>
-            <?php
-                displayProduct();
-            ?>
-          </tbody>
-        </table>
-        </div>
-        </section>
-        </main>
+      </div>
+    </section>
+  </main>
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-        <!-- Modal -->
-    <div
-      class="modal fade"
-      id="staticBackdrop"
-      data-bs-backdrop="static"
-      data-bs-keyboard="false"
-      tabindex="-1"
-      aria-labelledby="staticBackdropLabel"
-      aria-hidden="true"
-    >
+  <!--//////////////// MODAL STARTS HERE ///////////////////////-->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="staticBackdropLabel">
-              Add Product
-            </h1>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
+            <h1 class="modal-title fs-5" id="staticBackdropLabel">Add Product</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
+
           <form action="../functions/crud.php" method="post" class="form-transparent" enctype="multipart/form-data">
             <div class="modal-body">
+
               <label for="name" class="form-label fw-bold">Name</label>
-              <input
-                name="name"
-                type="text"
-                id="name"
-                class="form-control"
-                placeholder="Enter the name of the product"
-              />
+              <input name="name" type="text" id="name" class="form-control" placeholder="Enter the name of the product"/>
+
               <label for="categiry" class="form-label fw-bold">Category</label>
-              <select
-                name="category"
-                class="form-select"
-                aria-label="Default select example"
-                id="category"
-                required
-              >
+              <select name="category" class="form-select" aria-label="Default select example" id="category" required>
                 <option selected disabled value="">Please select</option>
                 <option value="1">Game</option>
                 <option value="2">Keyboard</option>
@@ -156,62 +159,52 @@ include('../includes/head.php');
                 <option value="4">Monitor</option>
                 <option value="5">Laptop</option>
               </select>
+
               <label for="quantity" class="form-label fw-bold">Quantity</label>
-              <input
-                name="quantity"
-                type="number"
-                id="quantity"
-                class="form-control"
-                placeholder="Enter the quantity of the product "
-              />
+              <input name="quantity" type="number" id="quantity" class="form-control" placeholder="Enter the quantity of the product"/>
+
               <label for="price" class="form-label fw-bold">Price</label>
-              <input
-                name="price"
-                type="number"
-                id="price"
-                class="form-control"
-                placeholder="Enter the price of the product"
-              />
+              <input name="price" type="number" id="price" class="form-control" placeholder="Enter the price of the product"/>
+
               <label for="image" class="form-label fw-bold">Image</label>
-              <input
-                name="image"
-                type="file"
-                id="image"
-                class="form-control"
-                accept=".jpg, .png, .jpeg"
-              />
+              <input name="image" type="file" id="image" class="form-control" accept=".jpg, .png, .jpeg"/>
+
             </div>
+
             <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-bs-dismiss="modal"
-              >
-                Close
-              </button>
-              <button type="submit" name="addProduct" class="btn btn-primary">
-                ADD
-              </button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submit" name="addProduct" class="btn btn-primary">ADD</button>
             </div>
+
           </form>
         </div>
       </div>
     </div>
-    <script src="cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js">
-    $(document).ready( function () {
-    $('#myTable').DataTable();
-      } );
+    <!--//////////////// MODAL ENDS HERE ///////////////////////-->
+
+
+    
+    <script>
+      $(document).ready( function () {
+        $('#myTable').DataTable();
+      });
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
+
     <script>
       var el = document.getElementById("wrapper");
       var toggleButton = document.getElementById("menu-toggle");
-
       toggleButton.onclick = function () {
         el.classList.toggle("toggled");
       };
     </script>
+    
+    <!--//////////////////// LINK TO FORM.JS /////////////////////////////-->
     <script src="../javascript/form.js"></script>
+    <!--//////////////////// LINK TO SIDEBAR.JS /////////////////////////////-->
     <script src="../javascript/sidbar.js"></script>
-  </body>
-</html>
+    <!--//////////////////// LINK PAGINATION PLUGIN /////////////////////////////-->
+    <script src="cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+    <!--//////////////////// LINK BOOTSTRAP /////////////////////////////-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>

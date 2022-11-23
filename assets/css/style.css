@@ -13,6 +13,7 @@ a:hover{
     background: url(../img/backgorund-image.jpg);
     background-size: cover;
     background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 .signup-bg {
     background: url(../img/signup.jpg);
@@ -102,3 +103,18 @@ body{
 }
 
 
+.statistic-cards {
+    background-color:  #0B0D0F !important;
+}
+
+.statistics-icons {
+    color: white !important;
+
+}
+
+.btn-floating {
+    background-color: #1c1f23 !important;
+    border-radius: 50%;
+    margin: 2px;
+    padding: 7px;
+}
