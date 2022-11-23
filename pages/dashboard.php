@@ -18,12 +18,13 @@ include('../includes/head.php');
         <label for="check"> <i id="burger" class="ms-3 fs-3 text-light fa-solid fa-bars"></i></label>
     </div>
     <a class="nav-link">
-    <i class="fa-solid fa-user px-2"></i>
+    <!-- <i class="fa-solid fa-user px-2"></i>
+    
       <?php
-        session_start();
-        echo $_SESSION['admin'];
+        // session_start();
+        // echo $_SESSION['admin'];
       ?>
-    </a>
+    </a> -->
   </nav>
 
   <main>
@@ -38,15 +39,14 @@ include('../includes/head.php');
       </div>
     </aside>
 
-    <section class="container-section">
+    <section id="section" class="container-section">
       <div class="container-fluid  text-light p-5 rounded ">
         <div class="row justify-content-around">
-          
           <!--//////////////// STATISTICS SECTION ///////////////////////-->
-          <div class="card col-md-3 mb-3 statistic-cards p-2">
+          <div class="card col-md-3 mt-0  mb-3 statistic-cards">
 
             <!--////////////////////////// CATEGORIES CARD //////////////////////////-->
-            <div class="card-body text-light fw-bold text-center">Categories</div>
+            <div class="card-body mt-3 text-light fw-bold text-center">Categories</div>
               <div class="pb-3 d-flex justify-content-center">
                 <!----- GAMES ICONS ----->
                 <span class="d-flex align-items-center flex-column ">
@@ -88,19 +88,20 @@ include('../includes/head.php');
               </div>
             </div>
             
-            <!--////////////////////////// TOTAL PRODUCTS CARD //////////////////////////-->
-            <div class="card col-md-3 mb-3 col-sm-12 statistic-cards d-flex align-items-center p-2">
-              <div class="card-body text-light fw-bold">Total products</div>
-                <div>
+            <!--///////////////////////// TOTAL PRODUCTS CARD //////////////////////////-->
+            <div class="card col-md-3 mt-0 mb-3 col-sm-12 statistic-cards  d-flex ">
+              <div class="card-body text-light fw-bold text-center ">
+                <p> Total products</p>
                   <span class="text-danger  fw-bold text-center p-2 fs-4">
                     <?php echo totalProducts(); ?>
-                </span>
+                  </span>
               </div>
             </div>
 
             <!--////////////////////////// TOTAL QUANTITIES CARD //////////////////////////-->
-            <div class="card col-md-3 mb-3 col-sm-12 statistic-cards d-flex align-items-center p-2">
-              <div class="card-body text-light fw-bold">Total quantities</div>
+            <div class="card col-md-3 mt-0 mb-3 col-sm-12 statistic-cards d-flex align-items-center ">
+              <div class="card-body text-light fw-bold text-center">
+                <p>Total quantities</p>
                 <div>
                   <span class="text-danger fw-bold text-center p-2 fs-4">
                     <?php echo totalQuantities(); ?>
@@ -112,7 +113,7 @@ include('../includes/head.php');
           </div>
 
           <!--////////////////////////// TABEL SECTION //////////////////////////-->
-          <div class="table-responsive mx-4" style="width:94%">
+          <div class="table-responsive" style="width:100%">
             <table id="myTable" class="table table-dark table-striped   table-bordered rounded shadow-sm table-hover">
               <thead>
                 <tr class="" >

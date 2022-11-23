@@ -90,7 +90,7 @@ body{
     position: fixed;
     top:0;
     left: 0;
-    display:block;
+    display:none;
 }
 
 #burger{
@@ -98,11 +98,19 @@ body{
 }
 
 .container-section{
+
+    /* margin-left: px !important; */
+    width:calc(100vw) !important;
+}
+.respons{
     margin-left: 200px !important;
     width:calc(100vw - 200px) !important;
 }
 
-
+/* .card-card{
+    height:172px !important;
+    line-height: 172px !important;
+} */
 .statistic-cards {
     background-color:  #0B0D0F !important;
 }
@@ -111,10 +119,24 @@ body{
     color: white !important;
 
 }
-
+#left-menu{
+    display: none;
+}
 .btn-floating {
     background-color: #1c1f23 !important;
     border-radius: 50%;
     margin: 2px;
     padding: 7px;
+}
+@media (max-width:500px){
+    /* #aside-bar{
+        display: none;
+    }
+    .container-section{
+        margin-left: 0px !important;
+        width:calc(100vw) !important;
+    }
+    #left-menu{
+        display: block;
+    } */
 }

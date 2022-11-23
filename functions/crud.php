@@ -31,12 +31,12 @@ function displayProduct()
             <td class="text-center nameProduct" style="height:60px;line-height:60px">'.$row['name'].'</td>
             <td class="text-center categoryProduct" style="height:60px;line-height:60px">'.$row['category'].'</td>
             <td class="text-center quantityProduct" style="height:60px;line-height:60px">'.$row['quantity'].'</td>
-            <td class="text-center priceProduct" style="height:60px;line-height:60px">'.$row['price'].'</td>
+            <td class="text-center priceProduct" style="height:60px;line-height:60px">'.$row['price'].'$</td>
             <form action="editform.php" method="post">
-            <td style="height:60px;line-height:60px">
+            <td class="text-center" style="height:60px;line-height:60px">
                 <input type="hidden" name="id" value="'.$row['id'].'">
-                <button type="submit" class="btn btn-info rounded-pill"  >Update</button>
-                <button name="deleteProduct" type="submit" class="btn btn-danger rounded-pill">Delete</button>
+                <button type="submit" class="btn btn-info rounded-pill mt-2 mb-1"  >Update</button>
+                <button name="deleteProduct" type="submit" class="btn btn-danger mb-1 mt-2 rounded-pill">Delete</button>
             </td>
             </form>
 
