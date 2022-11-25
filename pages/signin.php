@@ -2,7 +2,11 @@
 /*////////////////  INCLUDE THE CONNECTION  /////////////////*/
 include("../connection/database.php");
 
+
 session_start();
+if(isset($_SESSION["admin"])){
+  header('location:dashboard.php');
+}
 
 /*************************************************************/
 /*////////////////  SIGN IN FUNCTION  ///////////////////////*/
@@ -13,6 +17,7 @@ if(isset($_POST['signin']))   signin();
 function signin()
 {
   global $connect;
+  
   
   $email = $_POST['email'];
   $password = md5($_POST['password']);

@@ -1,5 +1,8 @@
 <?php
-
+session_start();
+if(!isset($_SESSION['admin'])){
+  header('location:signin.php');
+}
 include('../functions/crud.php');
 include('../functions/statistics.php');
 
@@ -9,7 +12,7 @@ include('../includes/head.php');
 ?>
 
 
-<body>
+<body class="dashboard-body">
   <!--////////////////////////// HEADER //////////////////////////-->
   <nav class="dash-bg w-100 px-3 nav d-flex justify-content-between bg-dark">
     <div class="d-flex justify-content-evenly align-items-center">
@@ -18,18 +21,17 @@ include('../includes/head.php');
         <label for="check"> <i id="burger" class="ms-3 fs-3 text-light fa-solid fa-bars"></i></label>
     </div>
     <a class="nav-link">
-    <!-- <i class="fa-solid fa-user px-2"></i>
-    
+    <i class="fa-solid fa-user px-2"></i>
       <?php
-        // session_start();
-        // echo $_SESSION['admin'];
+        echo $_SESSION['admin'];
       ?>
-    </a> -->
+    </a> 
   </nav>
 
   <main>
-    <!--//////////////// ASIDEN BAR SECTION ///////////////////////-->
+    <!--//////////////// ASIDE BAR SECTION ///////////////////////-->
     <aside id="aside-bar" >
+
       <div class="d-flex justify-content-center flex-column gap-2 mx-2 sidbar-button">
         <button type="button"  class="btn color-btn rounded rounded-pill"  data-bs-toggle="modal"  data-bs-target="#staticBackdrop"><i class="fa-solid fa-plus"></i> ADD PRODUCT</button>
         <button type="button" class="btn color-btn rounded rounded-pill">EDIT PROFILE</button>

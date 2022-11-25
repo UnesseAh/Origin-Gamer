@@ -34,13 +34,4 @@ function statistics($category){
 }
 
 
-
-
-
-
-
-
-
-
-
 ?>

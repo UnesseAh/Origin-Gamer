@@ -55,7 +55,9 @@ tbody tr td img{
 body{
     overflow-x:hidden ;
 }
-
+.dashboard-body{
+    background-color: #1c1f23 !important;
+}
 .logo-img {
     width: 60px;
 }
@@ -77,40 +79,29 @@ body{
 
 .dash-bg {
     background-color: #0B0D0F !important;
-    /* width:calc(100vw - 200px) !important;
-    margin-left: 200px; */
     position: fixed;
     top:0;
-    z-index:1;
+    z-index:2;
 }
 #aside-bar{
     background-color:  #0B0D0F !important;
-    height:100vh;
-    width:200px;
     position: fixed;
+    height:100vh;
+    width:240px;
     top:0;
-    left: 0;
-    display:none;
+    left: -100%;
+    transition: .5s;
+}
+.affichage{
+    left:0 !important;
+    z-index : 1 !important;
 }
 
 #burger{
     cursor:pointer;
 }
 
-.container-section{
 
-    /* margin-left: px !important; */
-    width:calc(100vw) !important;
-}
-.respons{
-    margin-left: 200px !important;
-    width:calc(100vw - 200px) !important;
-}
-
-/* .card-card{
-    height:172px !important;
-    line-height: 172px !important;
-} */
 .statistic-cards {
     background-color:  #0B0D0F !important;
 }
@@ -128,7 +119,7 @@ body{
     margin: 2px;
     padding: 7px;
 }
-@media (max-width:500px){
+/* @media (max-width:500px){ */
     /* #aside-bar{
         display: none;
     }
@@ -139,4 +130,4 @@ body{
     #left-menu{
         display: block;
     } */
-}
+/* } */
